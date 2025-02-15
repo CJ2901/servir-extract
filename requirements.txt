@@ -1,0 +1,12 @@
+pandas
+numpy
+requests
+# selenium
+# streamlit
+tqdm
+rich
+bs4
+fastapi==0.114.2
+uvicorn==0.30.6 
+supabase
+python-dotenv

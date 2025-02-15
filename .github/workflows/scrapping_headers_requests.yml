@@ -1,0 +1,40 @@
+name: Python Scrapping with Requests
+
+on:
+  push:
+    branches:
+      - "fail requests.exceptions.ReadTimeout: HTTPSConnectionPool(host='app.servir.gob.pe', port=443): Read timed out. (read timeout=10)"
+
+jobs:
+  selenium_job:
+    runs-on: windows-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.x"
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+
+      - name: Run Selenium script
+        run: python main.py
+
+      # - id: commit
+      #   name: Commit files
+      #   run: |
+      #     git config --local user.name "action-user"
+      #     git pull
+      #     git config --local user.email "actions@github.com"
+      #     git add -A
+      #     git commit -m "Update Data"
+      #     git push origin testing_page
+      #   env:
+      #     REPO_KEY: ${{ secrets.GITHUB_TOKEN }}
+      #     username: github-actions
